@@ -1,73 +1,68 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   queue.c                                            :+:      :+:    :+:   */
+/*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/22 18:03:36 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/22 19:33:21 by nkamolba         ###   ########.fr       */
+/*   Created: 2017/12/22 19:14:23 by nkamolba          #+#    #+#             */
+/*   Updated: 2017/12/22 19:34:10 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_queue	*create_queue(void)
+t_stack	*create_stack(void)
 {
-	t_queue	*queue;
+	t_stack	*stack;
 
-	if (!(queue = (t_queue *)malloc(sizeof(t_queue))))
+	if (!(stack = (t_stack *)malloc(sizeof(t_stack))))
 		exit(1);
-	queue->size = 0;
-	queue->head = NULL;
-	queue->tail = NULL;
-	return (queue);
+	stack->size = 0;
+	stack->head = NULL;
+	return (stack);
 }
 
-void	enqueue(t_queue *queue, int n)
+void	push(t_stack *stack, int n)
 {
 	t_node	*node;
 
-	if (!queue)
+	if (!stack || !(stack->head))
 		exit(1);
 	node = create_node(n);
-	if (queue->size > 0)
-		queue->tail->next = node;
-	else
-		queue->head = node;
-	queue->tail = node;
-	queue->size++;
+	if (stack->size > 0)
+		node->next = stack->head;
+	stack->head = node;
+	stack->size++;
 }
 
-int		dequeue(t_queue *queue)
+int		pop(t_stack *stack)
 {
 	t_node	*node;
 	int		n;
 
-	if (!queue || !(queue->head))
+	if (!stack)
 		exit(1);
-	node = queue->head;
+	node = stack->head;
 	n = node->n;
-	if (queue->size == 1)
-		queue->tail = NULL;
-	queue->head = queue->head->next;
+	stack->head = node->next;
 	free(node);
-	queue->size--;
+	stack->size--;
 	return (n);
 }
 
-void	print_queue(t_queue *queue)
+void	print_stack(t_stack *stack)
 {
-	t_adjlist_node	*node;
+	t_node *node;
 
-	if (queue->size == 0)
+	if (stack->size == 0)
 		return ;
-	node = queue->head;
+	node = stack->head;
 	ft_printf("%d", node->n);
 	node = node->next;
 	while (node)
 	{
-		ft_printf(" -> %d", node->dst);
+		ft_printf(" -> %d", node->n);
 		node = node->next;
 	}
 	ft_printf("\n");

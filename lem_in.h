@@ -1,40 +1,47 @@
 #ifndef LEM_IN_H
 # define LEM_IN_H
 
-# include <stdio.h>
-# include <stdlib.h>
+# include "libft/libft.h"
 
-typedef struct				s_adjlist_node
+typedef struct		s_node
 {
-	int						dst;
-	struct s_adjlist_node	*next;
-}							t_adjlist_node;
+	int				n;
+	struct s__node	*next;
+}					t_node;
 
-typedef struct				s_adjlist
+t_node				*create_node(n);
+
+typedef struct		s_stack
 {
-	struct s_adjlist_node	*head;
-}							t_adjlist;
+	int				size;
+	struct s_node	*head;
+}
 
-typedef struct				s_graph
+t_stack				*create_stack(void);
+void				push(t_stack *stack, int n);
+int					pop(t_stack *stack);
+void				print_stack(t_stack *stack);
+
+typedef struct		s_queue
 {
-	int						size;
-	struct s_adjlist		*array;
-}							t_graph;
+	int				size;
+	struct s_node	*head;
+	struct s_node	*tail;
+}					t_queue;
 
-typedef struct				s_queue
+t_queue				*create_queue(void);
+void				enqueue(t_queue *queue, int n);
+int					dequeue(t_queue *queue);
+void				print_queue(t_queue *queue);
+
+typedef struct		s_graph
 {
-	struct s_adjlist_node	*head;
-	struct s_adjlist_node	*tail;
-}							t_queue;
+	int				size;
+	struct s_stack	*array;
+}					t_graph;
 
-t_adjlist_node				*create_adjlist_node(int dst);
-t_graph						*create_graph(int size);
-void						add_edge(t_graph *graph, int src, int dst);
-void						print_graph(t_graph *graph);
-
-t_queue						*create_queue(void);
-void						push_front(t_queue *queue, int dst);
-void						enqueue(t_queue *queue, int dst);
-int							dequeue(t_queue *queue);
+t_graph				*create_graph(int size);
+void				add_edge(t_graph *graph, int src, int dst);
+void				print_graph(t_graph *graph);
 
 #endif

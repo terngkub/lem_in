@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 18:04:33 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/22 18:05:14 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/22 19:40:12 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,37 @@ t_queue			*get_path(int *edge_to, int src, int dst)
 	return (path);
 }
 
-void			shortest_path(t_graph *graph, int src, int dst)
+int				*create_marked(t_queue *queue, int src, int size)
+{
+	int				*marked;
+	t_adjlist_node	*node;
+
+	if (!(marked = ft_memealloc(sizeof(int) * size)))
+		exit(1);
+	marked[src] = 1;
+	node = queue->head;
+	while (node)
+	{
+		marked[node->dst] = 1;
+		node = node->next;
+	}
+	return (marked);
+}
+
+int				*bfs(t_graph *graph, int src)
 {
 	t_queue			*queue;
 	t_adjlist_node	*node;
-	int				marked[graph->size];
-	int				edge_to[graph->size];
+	int				*marked;
+	int				*edge_to;
 	int				v;
 	int				i;
-	t_queue			*path;
 
 	queue = create_queue();
+	if (!(edge_to = ft_memalloc(sizeof(int) * graph->size)))
+		exit(1);
+	marked = create_marked;
 	node = graph->array[src].head;
-	i = 0;
-	while (i < graph->size)
-	{
-		marked[i] = 0;
-		edge_to[i++] = -1;
-	}
-	marked[0] = 1;
 	while (node)
 	{
 		marked[node->dst] = 1;
@@ -69,24 +81,15 @@ void			shortest_path(t_graph *graph, int src, int dst)
 			node = node->next;
 		}
 	}
-	path = get_path(edge_to, src, dst);
-	i = 0;
-	while (i < graph->size)
-	{
-		printf("%d: %d\n", i, edge_to[i]);
-		i++;
-	}
-	node = path->head;
-	while(node)
-	{
-		printf("%d ", node->dst);
-		node = node->next;
-	}
+	return (edge_to);
 }
+
 
 int				main(void)
 {
 	t_graph			*graph;
+	int				*edge_to;
+	t_queue			*path;
 
 	graph = create_graph(8);
 	add_edge(graph, 0, 1);
@@ -100,6 +103,8 @@ int				main(void)
 	add_edge(graph, 5, 7);
 	add_edge(graph, 6, 7);
 	print_graph(graph);
-	shortest_path(graph, 0, 7);
+	edge_to = bfs(graph, 0);
+	path = get_path(edge_to, 0, 7);
+	print_queue(path);
 	return (0);
 }
