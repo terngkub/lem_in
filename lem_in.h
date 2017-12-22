@@ -27,4 +27,14 @@ typedef struct				s_queue
 	struct s_adjlist_node	*tail;
 }							t_queue;
 
+t_adjlist_node				*create_adjlist_node(int dst);
+t_graph						*create_graph(int size);
+void						add_edge(t_graph *graph, int src, int dst);
+void						print_graph(t_graph *graph);
+
+t_queue						*create_queue(void);
+void						push_front(t_queue *queue, int dst);
+void						enqueue(t_queue *queue, int dst);
+int							dequeue(t_queue *queue);
+
 #endif

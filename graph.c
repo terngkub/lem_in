@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   graph.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/12/22 18:02:55 by nkamolba          #+#    #+#             */
+/*   Updated: 2017/12/22 18:11:55 by nkamolba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 t_adjlist_node	*create_adjlist_node(int dst)
@@ -57,73 +69,4 @@ void			print_graph(t_graph *graph)
 		printf("\n");
 		i++;
 	}
-}
-
-t_queue			create_queue(void)
-{
-	t_queue			*queueu;
-
-	if (!(queue = (t_queue *)malloc(sizeof(t_queue))))
-		reutrn (0);
-	queue->head = NULL;
-	queue->tail = NULL;
-	return (queue);
-}
-
-void			enqueue(t_queue *queue, int dst)
-{
-	t_adjlist_node	*node;
-
-	if (!queue)
-		return (NULL);
-	node = create_adjlist_node(dst);
-	if (queue->head == NULL)
-	{
-		queue->head = node;
-		queue->tail = node;
-	}
-	else
-	{
-		queue->tail->next = node;
-		queue->tail = node;
-	}
-}
-
-int				dequeue(t_queue *queue)
-{
-	t_adjlist_node	*node;
-
-	if (!queue || !(queue->head))
-		return (NULL);
-
-}
-
-void			*shortest_path(t_graph *graph, int src, int dst)
-{
-	int				marked[graph->size];
-	int				edge_to[graph->size];
-
-	//queue
-	marked[src] = 1;
-	//enqueue
-	//while (queue is not empty)
-	//	v = dequeue
-	//	node
-	//	while graph->array[v].head
-	//			edge_to[
-
-}
-
-int				main(void)
-{
-	t_graph			*graph;
-
-	graph = create_graph(4);
-	add_edge(graph, 0, 1);
-	add_edge(graph, 0, 2);
-	add_edge(graph, 1, 2);
-	add_edge(graph, 1, 3);
-	add_edge(graph, 2, 3);
-	print_graph(graph);
-	return (0);
 }
