@@ -6,7 +6,7 @@
 #    By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/22 18:05:36 by nkamolba          #+#    #+#              #
-#    Updated: 2017/12/22 18:10:15 by nkamolba         ###   ########.fr        #
+#    Updated: 2017/12/22 18:14:24 by nkamolba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ $(NAME) : $(FILE_O)
 clean:
 	rm -f $(FILE_O)
 
-fclean:
+fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
