@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 18:04:33 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/22 19:40:12 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/22 23:43:15 by terng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ int				*create_marked(t_queue *queue, int src, int size)
 
 int				*bfs(t_graph *graph, int src)
 {
-	t_queue			*queue;
-	t_adjlist_node	*node;
-	int				*marked;
-	int				*edge_to;
-	int				v;
-	int				i;
+	t_queue	*queue;
+	t_node	*node;
+	int		*marked;
+	int		*edge_to;
+	int		v;
+	int		i;
 
 	queue = create_queue();
 	if (!(edge_to = ft_memalloc(sizeof(int) * graph->size)))
@@ -84,6 +84,10 @@ int				*bfs(t_graph *graph, int src)
 	return (edge_to);
 }
 
+t_stack	**get_all_paths(t_graph *graph)
+{
+
+}
 
 int				main(void)
 {

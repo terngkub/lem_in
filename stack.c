@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 19:14:23 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/22 19:34:10 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/22 23:13:58 by terng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	push(t_stack *stack, int n)
 {
 	t_node	*node;
 
-	if (!stack || !(stack->head))
+	if (!stack)
 		exit(1);
 	node = create_node(n);
 	if (stack->size > 0)
@@ -41,7 +41,7 @@ int		pop(t_stack *stack)
 	t_node	*node;
 	int		n;
 
-	if (!stack)
+	if (!stack || stack->size <= 0)
 		exit(1);
 	node = stack->head;
 	n = node->n;

@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 18:03:36 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/22 19:33:21 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/22 23:08:22 by terng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		dequeue(t_queue *queue)
 
 void	print_queue(t_queue *queue)
 {
-	t_adjlist_node	*node;
+	t_node	*node;
 
 	if (queue->size == 0)
 		return ;
@@ -67,7 +67,7 @@ void	print_queue(t_queue *queue)
 	node = node->next;
 	while (node)
 	{
-		ft_printf(" -> %d", node->dst);
+		ft_printf(" -> %d", node->n);
 		node = node->next;
 	}
 	ft_printf("\n");
