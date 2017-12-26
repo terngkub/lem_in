@@ -3,54 +3,39 @@
 
 # include "libft/libft.h"
 
-typedef struct		s_node
+typedef struct		s_room
 {
-	int				n;
-	struct s_node	*next;
-}					t_node;
+	char			*name;
+	int				x;
+	int				y;
+	t_stack			*edge;
+}					t_room;
 
-t_node				*create_node(int n);
-
-typedef struct		s_stack
+typedef struct		s_link
 {
-	int				size;
-	struct s_node	*head;
-}					t_stack;
+	char			*src;
+	char			*dst;
+}					t_link;
 
-t_stack				*create_stack(void);
-void				push(t_stack *stack, int n);
-int					pop(t_stack *stack);
-void				print_stack(t_stack *stack);
-
-typedef struct			s_stack_node
+typedef struct		s_farm
 {
-	struct s_stack		*stack;
-	struct s_stack_list	*next;
-}						t_stack_node;
+	size_t			ant;
+	struct s_room	*start;
+	struct s_room	*end;
+	struct s_stack	*room;
+	struct s_stack	*link;
+}					t_farm;
 
-t_stack_node			*create_stack_node(t_stack *stack);
+t_room				*create_room(void);
+void				read_room(t_farm *farm, char *str);
+void				read_input(t_farm *farm);
 
-typedef struct			s_stack_list
-{
-	int					size;
-	struct s_stack_node	*head;
-}						t_stack_list;
+void				clear_split(char **arr);
+void				clear_link(void *content, size_t content_size);
+void				clear_room(void *content, size_t content_size);
 
-t_stack_list			create_stack_list(void);
-void					push_stack(t_stack_node *stack_node);
 
-typedef struct		s_queue
-{
-	int				size;
-	struct s_node	*head;
-	struct s_node	*tail;
-}					t_queue;
-
-t_queue				*create_queue(void);
-void				enqueue(t_queue *queue, int n);
-int					dequeue(t_queue *queue);
-void				print_queue(t_queue *queue);
-
+/*
 typedef struct		s_graph
 {
 	int				size;
@@ -60,5 +45,6 @@ typedef struct		s_graph
 t_graph				*create_graph(int size);
 void				add_edge(t_graph *graph, int src, int dst);
 void				print_graph(t_graph *graph);
+*/
 
 #endif
