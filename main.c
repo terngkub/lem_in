@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/26 11:36:41 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/27 13:52:43 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/27 14:06:32 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	clear_split(char **arr)
 
 void	clear_edge(void *content, size_t content_size)
 {
+	free(content);
 }
 
 void	clear_link(void *content, size_t content_size)
