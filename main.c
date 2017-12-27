@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/26 11:36:41 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/26 17:29:47 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/27 13:52:43 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int	main(void)
 	farm.room = ft_stack_create(sizeof(t_room));
 	farm.link = ft_stack_create(sizeof(t_link));
 	read_input(&farm);
-	ft_printf("%s\n", farm.start->name);
-	ft_printf("%s\n", farm.end->name);
+	create_graph(&farm);
+	print_graph(&farm);
 	clear_farm(&farm);
 	return (0);
 }

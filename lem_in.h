@@ -26,6 +26,8 @@ typedef struct		s_farm
 	struct s_stack	*link;
 }					t_farm;
 
+void				ft_error(void);
+
 t_room				*create_room(void);
 void				read_room(t_farm *farm, char *str);
 void				read_input(t_farm *farm);
@@ -34,17 +36,7 @@ void				clear_split(char **arr);
 void				clear_link(void *content, size_t content_size);
 void				clear_room(void *content, size_t content_size);
 
-
-/*
-typedef struct		s_graph
-{
-	int				size;
-	struct s_stack	**array;
-}					t_graph;
-
-t_graph				*create_graph(int size);
-void				add_edge(t_graph *graph, int src, int dst);
-void				print_graph(t_graph *graph);
-*/
+void				print_graph(t_farm *farm);
+void				create_graph(t_farm *farm);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 18:04:33 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/22 23:43:15 by terng            ###   ########.fr       */
+/*   Updated: 2017/12/27 13:59:49 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,31 +84,6 @@ int				*bfs(t_graph *graph, int src)
 	return (edge_to);
 }
 
-t_stack	**get_all_paths(t_graph *graph)
+int		*bfs(t_farm *farm)
 {
-
-}
-
-int				main(void)
-{
-	t_graph			*graph;
-	int				*edge_to;
-	t_queue			*path;
-
-	graph = create_graph(8);
-	add_edge(graph, 0, 1);
-	add_edge(graph, 0, 2);
-	add_edge(graph, 1, 6);
-	add_edge(graph, 2, 3);
-	add_edge(graph, 2, 4);
-	add_edge(graph, 3, 6);
-	add_edge(graph, 4, 5);
-	add_edge(graph, 5, 6);
-	add_edge(graph, 5, 7);
-	add_edge(graph, 6, 7);
-	print_graph(graph);
-	edge_to = bfs(graph, 0);
-	path = get_path(edge_to, 0, 7);
-	print_queue(path);
-	return (0);
 }
