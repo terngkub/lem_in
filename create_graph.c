@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/27 13:31:30 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/27 13:54:38 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/27 15:47:43 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void	print_graph(t_farm *farm)
 	while (current)
 	{
 		room = (t_room *)current->content;
-		ft_printf("%s ", room->name);
+		ft_printf("%s", room->name);
 		edge = room->edge->head;
 		while (edge)
 		{
-			ft_printf("-> %s", ((t_room *)edge->content)->name);
+			ft_printf(" -> %s", ((t_room *)edge->content)->name);
 			edge = edge->next;
 		}
 		ft_printf("\n");

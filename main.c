@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/26 11:36:41 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/27 14:06:32 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/27 19:54:38 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,36 @@ void	clear_farm(t_farm *farm)
 	ft_stack_delete(farm->room, clear_room);
 }
 
+void	print_path(t_queue *queue)
+{
+	t_list	*node;
+
+	node = queue->head;
+	while (node)
+	{
+		ft_printf("%s\n", ((t_room *)node->content)->name);
+		node = node->next;
+	}
+}
+
 int	main(void)
 {
 	t_farm	farm;
+	t_queue	*path;
+	t_room	*room;
 
-	farm.room = ft_stack_create(sizeof(t_room));
+	farm.room = ft_stack_create(sizeof(t_room *));
 	farm.link = ft_stack_create(sizeof(t_link));
+	farm.blocked = ft_stack_create(sizeof(t_room));
 	read_input(&farm);
-	create_graph(&farm);
-	print_graph(&farm);
-	clear_farm(&farm);
+	room = *((t_room **)farm.room->head->content);
+	ft_printf("%s\n", room->name);
+	//create_graph(&farm);
+	//print_graph(&farm);
+	//set_room(&farm);
+	//bfs(&farm);
+	//path = get_path(&farm);
+	//print_path(path);
+	//clear_farm(&farm);
 	return (0);
 }

@@ -8,7 +8,9 @@ typedef struct		s_room
 	char			*name;
 	int				x;
 	int				y;
-	t_stack			*edge;
+	int				marked;
+	struct s_room	*edge_to;
+	struct s_stack	*edge;
 }					t_room;
 
 typedef struct		s_link
@@ -24,6 +26,7 @@ typedef struct		s_farm
 	struct s_room	*end;
 	struct s_stack	*room;
 	struct s_stack	*link;
+	struct s_stack	*blocked;
 }					t_farm;
 
 void				ft_error(void);
@@ -38,5 +41,9 @@ void				clear_room(void *content, size_t content_size);
 
 void				print_graph(t_farm *farm);
 void				create_graph(t_farm *farm);
+
+t_queue				*get_path(t_farm *farm);
+void				bfs(t_farm *farm);
+void				set_room(t_farm *farm);
 
 #endif
