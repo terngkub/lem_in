@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 15:34:59 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/28 16:01:28 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/28 16:20:23 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	delete_path(void *node)
 
 	path = (t_node *)node;
 	ft_node_delete(path, NULL);
-	//free(path);
 }
 
 void	delete_room(void *node)

@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 14:55:31 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/28 15:55:08 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/28 16:18:46 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_node	*get_path(t_farm *farm)
 		ft_node_push_front(&path, ft_node_create(room));
 		room = room->edge_to;
 		if (room == farm->start)
-			break;
+			break ;
 	}
 	if (room == farm->start)
 		return (path);
@@ -73,7 +73,7 @@ t_node	*get_all_paths(t_farm *farm)
 		set_room(farm);
 		bfs(farm);
 		if (!(path = get_path(farm)))
-			break;
+			break ;
 		ft_node_push_back(&all_paths, ft_node_create(path));
 		ft_node_push_front(&farm->blocked, ft_node_create(path->content));
 		add_blocked(farm, path);
