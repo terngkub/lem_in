@@ -6,16 +6,21 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/25 17:53:57 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/27 19:42:42 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/28 11:57:10 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	ft_error(void)
+int		ft_isalldigit(char *str)
 {
-	ft_putstr_fd("ERROR\n", 2);
-	exit(1);
+	while (*str)
+	{
+		if (!ft_isdigit(*str))
+			return (0);
+		str++;
+	}
+	return (1);
 }
 
 void	read_comment(t_farm *farm, char *str)
@@ -26,14 +31,14 @@ void	read_comment(t_farm *farm, char *str)
 	{
 		get_next_line(0, &next_room);
 		read_room(farm, next_room);
-		farm->start = farm->room->head->content;
+		farm->start = farm->room->content;
 		free(next_room);
 	}
 	else if (ft_strcmp(str + 2, "end") == 0)
 	{
 		get_next_line(0, &next_room);
 		read_room(farm, next_room);
-		farm->end = farm->room->head->content;
+		farm->end = farm->room->content;
 		free(next_room);
 	}
 }
@@ -51,45 +56,48 @@ void	check_link(char **arr)
 		ft_error();
 }
 
+t_room	*find_room(t_farm *farm, char *name)
+{
+	t_node	*node;
+
+	node = farm->room;
+	while (node)
+	{
+		if (ft_strcmp(((t_room *)node->content)->name, name) == 0)
+			return (node->content);
+		node = node->next;
+	}
+	ft_error();
+	return (NULL);
+}
+
 void	read_link(t_farm *farm, char *str)
 {
 	char	**arr;
-	t_link	*link;
+	t_room	*src;
+	t_room	*dst;
 
 	if (!(arr = ft_strsplit(str, '-')))
 		ft_error();
 	check_link(arr);
-	if (!(link = (t_link *)malloc(sizeof(t_link))))
-		ft_error();
-	link->src = ft_strdup(arr[0]);
-	link->dst = ft_strdup(arr[1]);
-	ft_stack_push(farm->link, &link);
+	src = find_room(farm, arr[0]);
+	dst = find_room(farm, arr[1]);
 	clear_split(arr);
 }
 
-t_room	*create_room(void)
+t_room	*create_room(char **arr)
 {
 	t_room	*room;
 
 	if (!(room = (t_room *)malloc(sizeof(t_room))))
 		return (NULL);
-	room->name = NULL;
-	room->x = 0;
-	room->y = 0;
+	room->name = ft_strdup(arr[0]);
+	room->x = ft_atoi(arr[1]);
+	room->y = ft_atoi(arr[2]);
 	room->marked = 0;
-	room->edge = ft_stack_create(sizeof(t_room));
+	room->edge_to = NULL;
+	room->edge = NULL;
 	return (room);
-}
-
-int		ft_isalldigit(char *str)
-{
-	while (*str)
-	{
-		if (!ft_isdigit(*str))
-			return (0);
-		str++;
-	}
-	return (1);
 }
 
 void	check_room(char **arr)
@@ -115,11 +123,8 @@ void	read_room(t_farm *farm, char *str)
 	if (!(arr = ft_strsplit(str, ' ')))
 		return ;
 	check_room(arr);
-	room = create_room();
-	room->name = ft_strdup(arr[0]);
-	room->x = ft_atoi(arr[1]);
-	room->y = ft_atoi(arr[2]);
-	ft_stack_push(farm->room, &room);
+	room = create_room(arr);
+	ft_node_push_front(&farm->room, ft_node_create(room));
 	clear_split(arr);
 }
 
@@ -151,3 +156,4 @@ void	read_input(t_farm *farm)
 		free(str);
 	}
 }
+

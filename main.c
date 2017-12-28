@@ -6,18 +6,19 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/26 11:36:41 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/27 19:54:38 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/28 11:44:14 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
+/*
 void	ft_stack_delete(t_stack *stack, void (*del)(void *, size_t))
 {
 	ft_lstdel(&(stack->head), del);
 	free(stack);
 }
-
+*/
 void	clear_split(char **arr)
 {
 	int		i;
@@ -28,6 +29,7 @@ void	clear_split(char **arr)
 	free(arr);
 }
 
+/*
 void	clear_edge(void *content, size_t content_size)
 {
 	free(content);
@@ -71,18 +73,19 @@ void	print_path(t_queue *queue)
 	}
 }
 
+*/
 int	main(void)
 {
 	t_farm	farm;
 	t_queue	*path;
 	t_room	*room;
 
-	farm.room = ft_stack_create(sizeof(t_room *));
-	farm.link = ft_stack_create(sizeof(t_link));
-	farm.blocked = ft_stack_create(sizeof(t_room));
+	farm.room = NULL;
+	farm.link = NULL;
+	farm.blocked = NULL;
 	read_input(&farm);
-	room = *((t_room **)farm.room->head->content);
-	ft_printf("%s\n", room->name);
+	//room = *((t_room **)farm.room->head->content);
+	//ft_printf("%s\n", room->name);
 	//create_graph(&farm);
 	//print_graph(&farm);
 	//set_room(&farm);

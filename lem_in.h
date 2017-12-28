@@ -3,6 +3,12 @@
 
 # include "libft/libft.h"
 
+typedef struct		s_node
+{
+	void			*content;
+	struct s_node	*next;
+}					t_node;
+
 typedef struct		s_room
 {
 	char			*name;
@@ -10,7 +16,7 @@ typedef struct		s_room
 	int				y;
 	int				marked;
 	struct s_room	*edge_to;
-	struct s_stack	*edge;
+	struct s_node	*edge;
 }					t_room;
 
 typedef struct		s_link
@@ -24,14 +30,18 @@ typedef struct		s_farm
 	size_t			ant;
 	struct s_room	*start;
 	struct s_room	*end;
-	struct s_stack	*room;
-	struct s_stack	*link;
-	struct s_stack	*blocked;
+	struct s_node	*room;
+	struct s_node	*link;
+	struct s_node	*blocked;
 }					t_farm;
+
+t_node				*ft_node_create(void *content);
+void				ft_node_push_front(t_node **node, t_node *new);
+void				ft_node_push_back(t_node **node, t_node *new);
+void				ft_node_clear(t_node *node, void (*del)(void *));
 
 void				ft_error(void);
 
-t_room				*create_room(void);
 void				read_room(t_farm *farm, char *str);
 void				read_input(t_farm *farm);
 
