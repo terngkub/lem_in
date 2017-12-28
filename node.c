@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 11:32:04 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/28 13:36:37 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/28 15:34:51 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	*ft_node_pop_front(t_node **node)
 	return (content);
 }
 
-void	ft_node_clear(t_node *node, void (*del)(void *))
+void	ft_node_delete(t_node *node, void (*del)(void *))
 {
 	t_node	*temp;
 

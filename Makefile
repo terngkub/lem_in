@@ -6,7 +6,7 @@
 #    By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/22 18:05:36 by nkamolba          #+#    #+#              #
-#    Updated: 2017/12/22 23:09:35 by terng            ###   ########.fr        #
+#    Updated: 2017/12/28 15:35:30 by nkamolba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,9 @@ FLAG = -Wall -Wextra -Werror
 LIB = -Llibft -lft
 LIBFT = libft/libft.a
 
-FILE = main.c node.c queue.c stack.c graph.c
+FILE = main.c node.c utils.c read_input.c read_room.c read_link.c get_path.c\
+	   bfs.c cleaning.c
+
 FILE_O = $(FILE:%.c=%.o)
 
 all : $(LIBFT) $(NAME)
