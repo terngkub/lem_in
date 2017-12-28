@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 11:32:04 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/28 11:32:45 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/28 12:22:07 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,15 @@ void	ft_node_push_back(t_node **node, t_node *new)
 	while (temp->next)
 		temp = temp->next;
 	temp->next = new;
+}
+
+void	*ft_node_pop_front(t_node **node)
+{
+	if (!(*node))
+		return (NULL);
+
+
+	return ();
 }
 
 void	ft_node_clear(t_node *node, void (*del)(void *))

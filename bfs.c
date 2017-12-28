@@ -6,12 +6,12 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 18:04:33 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/27 17:07:58 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/28 12:22:08 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-
+/*
 t_queue	*get_path(t_farm *farm)
 {
 	t_queue	*path;
@@ -31,25 +31,25 @@ t_queue	*get_path(t_farm *farm)
 	}
 	return (path);
 }
+*/
 
 void	bfs(t_farm *farm)
 {
-	t_queue	*queue;
+	t_node	*queue;
 	t_room	*room;
-	t_list	*edge;
+	t_node	*edge;
 
-	queue = ft_queue_create(sizeof(t_room));
+	queue = NULL;
 	room = farm->start;
-	room->marked = 1;
-	edge = room->edge->head;
+	edge = room->edge;
 	while (edge)
 	{
 		((t_room *)edge->content)->marked = 1;
 		((t_room *)edge->content)->edge_to = room;
-		ft_queue_enqueue(queue, edge->content);
+		ft_node_push_back(&queue, edge->content);
 		edge = edge->next;
 	}
-	while (queue->head)
+	while (queue)
 	{
 		room = ft_queue_dequeue(queue);
 		edge = room->edge->head;
@@ -71,21 +71,22 @@ void	bfs(t_farm *farm)
 
 void	set_room(t_farm *farm)
 {
-	t_list	*current;
+	t_node	*node;
 
-	current = farm->room->head;
-	while (current)
+	node = farm->room;
+	while (node)
 	{
-		((t_room *)current->content)->marked = 0;
-		((t_room *)current->content)->edge_to = NULL;
-		current = current->next;
+		((t_room *)node->content)->marked = 0;
+		((t_room *)node->content)->edge_to = NULL;
+		node = node->next;
 	}
-	current = farm->blocked->head;
-	while (current)
+	node = farm->blocked;
+	while (node)
 	{
-		((t_room *)current->content)->marked = 1;
-		current = current->next;
+		((t_room *)node->content)->marked = 1;
+		node = node->next;
 	}
+	farm->start->marked = 1;
 }
 
 /*

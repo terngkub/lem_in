@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/25 17:53:57 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/28 11:57:10 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/28 12:22:10 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,16 @@ t_room	*find_room(t_farm *farm, char *name)
 void	read_link(t_farm *farm, char *str)
 {
 	char	**arr;
-	t_room	*src;
-	t_room	*dst;
+	t_room	*room1;
+	t_room	*room2;
 
 	if (!(arr = ft_strsplit(str, '-')))
 		ft_error();
 	check_link(arr);
-	src = find_room(farm, arr[0]);
-	dst = find_room(farm, arr[1]);
+	room1 = find_room(farm, arr[0]);
+	room2 = find_room(farm, arr[1]);
+	ft_node_push_front(&room1->edge, ft_node_create(room2));
+	ft_node_push_front(&room2->edge, ft_node_create(room1));
 	clear_split(arr);
 }
 
@@ -157,3 +159,29 @@ void	read_input(t_farm *farm)
 	}
 }
 
+void	print_graph(t_farm *farm)
+{
+	t_node	*node_room;
+	t_room	*room;
+	t_node	*node_edge;
+	t_room	*edge;
+
+	ft_printf("number of ants = %d\n", farm->ant);
+	ft_printf("start = %s\n", farm->start->name);
+	ft_printf("end = %s\n", farm->end->name);
+	node_room = farm->room;
+	while (node_room)
+	{
+		room = node_room->content;
+		ft_printf("%s", room->name);
+		node_edge = room->edge;
+		while (node_edge)
+		{
+			edge = node_edge->content;
+			ft_printf(" -> %s", edge->name);
+			node_edge = node_edge->next;
+		}
+		ft_printf("\n");
+		node_room = node_room->next;
+	}
+}

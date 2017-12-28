@@ -31,7 +31,6 @@ typedef struct		s_farm
 	struct s_room	*start;
 	struct s_room	*end;
 	struct s_node	*room;
-	struct s_node	*link;
 	struct s_node	*blocked;
 }					t_farm;
 
@@ -52,8 +51,10 @@ void				clear_room(void *content, size_t content_size);
 void				print_graph(t_farm *farm);
 void				create_graph(t_farm *farm);
 
+/*
 t_queue				*get_path(t_farm *farm);
 void				bfs(t_farm *farm);
+*/
 void				set_room(t_farm *farm);
 
 #endif

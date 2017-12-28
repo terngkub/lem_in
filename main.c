@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/26 11:36:41 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/28 11:44:14 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/28 12:22:12 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,10 @@ int	main(void)
 	t_room	*room;
 
 	farm.room = NULL;
-	farm.link = NULL;
 	farm.blocked = NULL;
 	read_input(&farm);
-	//room = *((t_room **)farm.room->head->content);
-	//ft_printf("%s\n", room->name);
-	//create_graph(&farm);
-	//print_graph(&farm);
-	//set_room(&farm);
+	print_graph(&farm);
+	set_room(&farm);
 	//bfs(&farm);
 	//path = get_path(&farm);
 	//print_path(path);
