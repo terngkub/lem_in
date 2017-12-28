@@ -37,6 +37,7 @@ typedef struct		s_farm
 t_node				*ft_node_create(void *content);
 void				ft_node_push_front(t_node **node, t_node *new);
 void				ft_node_push_back(t_node **node, t_node *new);
+void				*ft_node_pop_front(t_node **node);
 void				ft_node_clear(t_node *node, void (*del)(void *));
 
 void				ft_error(void);
@@ -51,10 +52,11 @@ void				clear_room(void *content, size_t content_size);
 void				print_graph(t_farm *farm);
 void				create_graph(t_farm *farm);
 
-/*
-t_queue				*get_path(t_farm *farm);
+t_node				*get_path(t_farm *farm);
 void				bfs(t_farm *farm);
-*/
 void				set_room(t_farm *farm);
+void				get_all_paths(t_farm *farm);
+
+void				print_path(t_node *node);
 
 #endif
