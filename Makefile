@@ -6,7 +6,7 @@
 #    By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/22 18:05:36 by nkamolba          #+#    #+#              #
-#    Updated: 2017/12/28 15:35:30 by nkamolba         ###   ########.fr        #
+#    Updated: 2017/12/28 17:54:41 by nkamolba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIB = -Llibft -lft
 LIBFT = libft/libft.a
 
 FILE = main.c node.c utils.c read_input.c read_room.c read_link.c get_path.c\
-	   bfs.c cleaning.c
+	   bfs.c cleaning.c move_ant.c
 
 FILE_O = $(FILE:%.c=%.o)
 
