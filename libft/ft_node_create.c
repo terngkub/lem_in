@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_node_create.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/26 11:36:41 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/29 18:51:49 by nkamolba         ###   ########.fr       */
+/*   Created: 2017/12/29 18:38:09 by nkamolba          #+#    #+#             */
+/*   Updated: 2017/12/29 18:44:45 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "libft.h"
 
-int		main(void)
+t_node	*ft_node_create(void *content)
 {
-	t_farm	farm;
+	t_node	*node;
 
-	farm_init(&farm);
-	read_input(&farm);
-	get_all_path(&farm);
-	allocate_ant(&farm);
-	move_ant(&farm);
-	clean_all(&farm);
-	return (0);
+	node = (t_node *)malloc(sizeof(t_node));
+	node->content = content;
+	node->next = NULL;
+	return (node);
 }

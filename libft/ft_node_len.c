@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_node_len.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/26 11:36:41 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/29 18:51:49 by nkamolba         ###   ########.fr       */
+/*   Created: 2017/12/29 18:47:23 by nkamolba          #+#    #+#             */
+/*   Updated: 2017/12/29 18:47:45 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "libft.h"
 
-int		main(void)
+size_t	ft_node_len(t_node *node)
 {
-	t_farm	farm;
+	size_t	len;
 
-	farm_init(&farm);
-	read_input(&farm);
-	get_all_path(&farm);
-	allocate_ant(&farm);
-	move_ant(&farm);
-	clean_all(&farm);
-	return (0);
+	len = 0;
+	while (node)
+	{
+		len++;
+		node = node->next;
+	}
+	return (len);
 }

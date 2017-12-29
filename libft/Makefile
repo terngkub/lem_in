@@ -6,7 +6,7 @@
 #    By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 09:11:21 by nkamolba          #+#    #+#              #
-#    Updated: 2017/12/25 17:48:39 by nkamolba         ###   ########.fr        #
+#    Updated: 2017/12/29 18:48:27 by nkamolba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,8 @@ FILE =	ft_memset ft_bzero ft_memcpy ft_memccpy ft_memmove ft_memchr ft_memcmp\
 		ft_lstpushback ft_lstprint ft_lstsearch ft_lstrev\
 		ft_stack_create ft_stack_push ft_stack_pop\
 		ft_queue_create ft_queue_enqueue ft_queue_dequeue\
+		ft_node_create ft_node_push_front ft_node_push_back\
+		ft_node_pop_front ft_node_delete ft_node_len\
 		get_next_line
 		
 FILE_O = $(addsuffix .o, $(FILE))

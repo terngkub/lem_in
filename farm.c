@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   farm.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/26 11:36:41 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/29 18:51:49 by nkamolba         ###   ########.fr       */
+/*   Created: 2017/12/29 18:35:52 by nkamolba          #+#    #+#             */
+/*   Updated: 2017/12/29 18:36:36 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int		main(void)
+void	farm_init(t_farm *farm)
 {
-	t_farm	farm;
-
-	farm_init(&farm);
-	read_input(&farm);
-	get_all_path(&farm);
-	allocate_ant(&farm);
-	move_ant(&farm);
-	clean_all(&farm);
-	return (0);
+	farm->ant_num = 0;
+	farm->start = NULL;
+	farm->end = NULL;
+	farm->room = NULL;
+	farm->blocked = NULL;
+	farm->all_path = NULL;
+	farm->path_num = 0;
+	farm->ant = NULL;
+	farm->alloc = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/29 15:23:15 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/29 16:43:01 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/29 17:28:07 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,5 @@ void	allocate_ant(t_farm *farm)
 				farm->alloc[i]--;
 			i = (i == 0) ? farm->path_num - 1 : i - 1;
 		}
-	}
-	i = 0;
-	while (i < farm->path_num)
-	{
-		ft_printf("path %lu: %lu\n", i, farm->alloc[i]);
-		i++;
 	}
 }

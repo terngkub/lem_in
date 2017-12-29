@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 14:55:31 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/29 15:30:34 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/29 17:28:42 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void	get_all_path(t_farm *farm)
 		farm->path_num += 1;
 		ft_node_push_front(&farm->blocked, ft_node_create(path->content));
 		add_blocked(farm, path);
-		print_path(path);
 	}
 	if (!farm->all_path)
 		ft_error();

@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 16:20:40 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/29 16:24:22 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/29 18:50:53 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 # define LEM_IN_H
 
 # include "libft/libft.h"
-
-typedef struct		s_node
-{
-	void			*content;
-	struct s_node	*next;
-}					t_node;
 
 typedef struct		s_room
 {
@@ -50,12 +44,7 @@ typedef struct		s_farm
 	size_t			*alloc;
 }					t_farm;
 
-t_node				*ft_node_create(void *content);
-void				ft_node_push_front(t_node **node, t_node *new);
-void				ft_node_push_back(t_node **node, t_node *new);
-void				*ft_node_pop_front(t_node **node);
-void				ft_node_delete(t_node *node, void (*del)(void *));
-size_t				ft_node_len(t_node *node);
+void				farm_init(t_farm *farm);
 
 void				ft_error(void);
 int					ft_isalldigit(char *str);
@@ -82,11 +71,6 @@ void				get_all_path(t_farm *farm);
 void				explore_edge(t_node **queue, t_node *edge, t_room *room);
 void				bfs(t_farm *farm);
 
-void				delete_split(char **arr);
-void				delete_path(void *node);
-void				delete_room(void *node);
-void				clean_all(t_farm *farm, t_node *all_paths);
-
 void				array_increment(size_t *arr, size_t len, size_t increment);
 size_t				array_sum(size_t *arr, size_t len);
 void				compute_lag(t_farm *farm);
@@ -94,4 +78,11 @@ void				allocate_ant(t_farm *farm);
 
 void				create_ant(t_farm *farm, size_t *nbr);
 void				move_ant(t_farm *farm);
+
+void				delete_split(char **arr);
+void				delete_path(void *node);
+void				delete_room(void *node);
+void				delete_ant(void *node);
+void				clean_all(t_farm *farm);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 17:35:55 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/29 17:12:41 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/29 17:45:40 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ void	create_ant(t_farm *farm, size_t *nbr)
 			farm->alloc[i]--;
 			*nbr += 1;
 			ft_node_push_back(&farm->ant, ft_node_create(ant));
-			ft_printf("ant %lu: ", ant->nbr);
-			print_path(ant->path);
 		}
 		i++;
 	}
@@ -51,9 +49,10 @@ void	move_ant(t_farm *farm)
 	size_t	finish;
 
 	nbr = 1;
-	create_ant(farm, &nbr);
-	while (farm->ant)
+	while (1)
 	{
+		if (nbr <= farm->ant_num)
+			create_ant(farm, &nbr);
 		finish = 0;
 		ant_node = farm->ant;
 		while (ant_node)
@@ -62,7 +61,7 @@ void	move_ant(t_farm *farm)
 			if (ant->path)
 			{
 				room = ((t_node*)ant->path)->content;
-				ft_printf("T%lu-%s ", ant->nbr, room->name);
+				ft_printf("L%lu-%s ", ant->nbr, room->name);
 				ant->path = ant->path->next;
 			}
 			else
@@ -70,9 +69,7 @@ void	move_ant(t_farm *farm)
 			ant_node = ant_node->next;
 		}
 		if (finish == farm->ant_num)
-			break;
-		ft_printf("\n________________________________________________\n");
-		if (nbr <= farm->ant_num)
-			create_ant(farm, &nbr);
+			break ;
+		ft_printf("\n");
 	}
 }

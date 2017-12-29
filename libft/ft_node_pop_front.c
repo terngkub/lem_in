@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_node_pop_front.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/26 11:36:41 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/29 18:51:49 by nkamolba         ###   ########.fr       */
+/*   Created: 2017/12/29 18:46:24 by nkamolba          #+#    #+#             */
+/*   Updated: 2017/12/29 18:46:45 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "libft.h"
 
-int		main(void)
+void	*ft_node_pop_front(t_node **node)
 {
-	t_farm	farm;
+	void	*content;
+	t_node	*temp;
 
-	farm_init(&farm);
-	read_input(&farm);
-	get_all_path(&farm);
-	allocate_ant(&farm);
-	move_ant(&farm);
-	clean_all(&farm);
-	return (0);
+	if (!(*node))
+		return (NULL);
+	temp = *node;
+	content = temp->content;
+	*node = temp->next;
+	free(temp);
+	return (content);
 }

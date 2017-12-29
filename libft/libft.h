@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 09:09:23 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/25 17:48:26 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/29 18:49:52 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,8 +131,18 @@ t_queue				*ft_queue_create(size_t content_size);
 void				ft_queue_enqueue(t_queue *queue, void const *content);
 void				*ft_queue_dequeue(t_queue *queue);
 
-typedef struct		s_struct
+typedef struct		s_node
 {
-	char			*str;
-}					t_struct;
+	void			*content;
+	struct s_node	*next;
+}					t_node;
+
+t_node				*ft_node_create(void *content);
+void				ft_node_push_front(t_node **node, t_node *new);
+void				ft_node_push_back(t_node **node, t_node *new);
+void				*ft_node_pop_front(t_node **node);
+void				ft_node_delete(t_node *node, void (*del)(void *));
+size_t				ft_node_len(t_node *node);
+
 #endif
+

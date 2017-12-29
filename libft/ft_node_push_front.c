@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_node_push_front.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/26 11:36:41 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/29 18:51:49 by nkamolba         ###   ########.fr       */
+/*   Created: 2017/12/29 18:44:52 by nkamolba          #+#    #+#             */
+/*   Updated: 2017/12/29 18:45:28 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "libft.h"
 
-int		main(void)
+void	ft_node_push_front(t_node **node, t_node *new)
 {
-	t_farm	farm;
-
-	farm_init(&farm);
-	read_input(&farm);
-	get_all_path(&farm);
-	allocate_ant(&farm);
-	move_ant(&farm);
-	clean_all(&farm);
-	return (0);
+	new->next = *node;
+	*node = new;
 }
