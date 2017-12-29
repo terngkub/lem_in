@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 14:35:00 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/28 15:38:13 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/29 20:00:25 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,6 @@ void	read_link(t_farm *farm, char *str)
 	ft_node_push_front(&room1->edge, ft_node_create(room2));
 	ft_node_push_front(&room2->edge, ft_node_create(room1));
 	delete_split(arr);
+	farm->input = ft_strfreecat_back(&farm->input, str);
+	farm->input = ft_strfreecat_back(&farm->input, "\n");
 }

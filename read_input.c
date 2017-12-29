@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/25 17:53:57 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/29 15:29:40 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/29 19:56:21 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	read_comment(t_farm *farm, char *str)
 		read_room(farm, next_room);
 		farm->start = farm->room->content;
 		free(next_room);
+		farm->input = ft_strfreecat_back(&farm->input, str);
+		farm->input = ft_strfreecat_back(&farm->input, "\n");
 	}
 	else if (ft_strcmp(str + 2, "end") == 0)
 	{
@@ -29,6 +31,8 @@ void	read_comment(t_farm *farm, char *str)
 		read_room(farm, next_room);
 		farm->end = farm->room->content;
 		free(next_room);
+		farm->input = ft_strfreecat_back(&farm->input, str);
+		farm->input = ft_strfreecat_back(&farm->input, "\n");
 	}
 }
 
@@ -40,6 +44,8 @@ void	read_ant(t_farm *farm)
 	if (!ft_isalldigit(str))
 		ft_error();
 	farm->ant_num = ft_atoi(str);
+	farm->input = ft_strdup(str);
+	farm->input = ft_strfreecat_back(&farm->input, "\n");
 	free(str);
 }
 

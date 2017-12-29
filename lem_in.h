@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 16:20:40 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/29 18:50:53 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/29 19:59:57 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct		s_ant
 
 typedef struct		s_farm
 {
+	char			*input;
 	size_t			ant_num;
 	struct s_room	*start;
 	struct s_room	*end;

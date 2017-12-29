@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 14:34:06 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/28 16:01:22 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/29 19:56:35 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ void	check_room(char **arr)
 		ft_error();
 	if (!ft_isalldigit(arr[1]) || !ft_isalldigit(arr[2]))
 		ft_error();
+	if (ft_strlen(arr[0]) == 0 || ft_strlen(arr[1]) == 0 ||
+			ft_strlen(arr[2]) == 0)
+		ft_error();
 }
 
 void	read_room(t_farm *farm, char *str)
@@ -53,4 +56,6 @@ void	read_room(t_farm *farm, char *str)
 	room = create_room(arr);
 	ft_node_push_front(&farm->room, ft_node_create(room));
 	delete_split(arr);
+	farm->input = ft_strfreecat_back(&farm->input, str);
+	farm->input = ft_strfreecat_back(&farm->input, "\n");
 }

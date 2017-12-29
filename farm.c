@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/29 18:35:52 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/29 18:36:36 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/29 20:01:23 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	farm_init(t_farm *farm)
 {
+	farm->input = NULL;
 	farm->ant_num = 0;
 	farm->start = NULL;
 	farm->end = NULL;
