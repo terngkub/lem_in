@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 14:59:51 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/28 15:02:00 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/29 15:11:43 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	print_graph(t_farm *farm)
 	t_node	*node_edge;
 	t_room	*edge;
 
-	ft_printf("number of ants = %d\n", farm->ant);
+	ft_printf("number of ants = %d\n", farm->ant_amount);
 	ft_printf("start = %s\n", farm->start->name);
 	ft_printf("end = %s\n", farm->end->name);
 	node_room = farm->room;

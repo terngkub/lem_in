@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 14:55:31 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/28 16:18:46 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/29 15:30:34 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,22 +62,22 @@ void	set_room(t_farm *farm)
 	farm->start->marked = 1;
 }
 
-t_node	*get_all_paths(t_farm *farm)
+void	get_all_path(t_farm *farm)
 {
-	t_node	*all_paths;
 	t_node	*path;
 
-	all_paths = NULL;
 	while (1)
 	{
 		set_room(farm);
 		bfs(farm);
 		if (!(path = get_path(farm)))
 			break ;
-		ft_node_push_back(&all_paths, ft_node_create(path));
+		ft_node_push_back(&farm->all_path, ft_node_create(path));
+		farm->path_num += 1;
 		ft_node_push_front(&farm->blocked, ft_node_create(path->content));
 		add_blocked(farm, path);
 		print_path(path);
 	}
-	return (all_paths);
+	if (!farm->all_path)
+		ft_error();
 }

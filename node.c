@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 11:32:04 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/28 15:34:51 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/29 15:22:27 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,17 @@ void	ft_node_delete(t_node *node, void (*del)(void *))
 		node = node->next;
 		free(temp);
 	}
+}
+
+size_t	ft_node_len(t_node *node)
+{
+	size_t	len;
+
+	len = 0;
+	while (node)
+	{
+		len++;
+		node = node->next;
+	}
+	return (len);
 }

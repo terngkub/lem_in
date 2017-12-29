@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/25 17:53:57 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/28 16:06:51 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/29 15:29:40 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	read_ant(t_farm *farm)
 	get_next_line(0, &str);
 	if (!ft_isalldigit(str))
 		ft_error();
-	farm->ant = ft_atoi(str);
+	farm->ant_num = ft_atoi(str);
 	free(str);
 }
 
