@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/25 17:53:57 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/29 20:17:28 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/29 21:08:27 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	read_comment(t_farm *farm, char *str)
 
 	if (ft_strcmp(str + 2, "start") == 0)
 	{
+		if (farm->start)
+			ft_error();
 		get_next_line(0, &next_room);
 		read_room(farm, next_room);
 		farm->start = farm->room->content;
@@ -27,6 +29,8 @@ void	read_comment(t_farm *farm, char *str)
 	}
 	else if (ft_strcmp(str + 2, "end") == 0)
 	{
+		if (farm->end)
+			ft_error();
 		get_next_line(0, &next_room);
 		read_room(farm, next_room);
 		farm->end = farm->room->content;
