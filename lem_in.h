@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 16:20:40 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/28 18:10:06 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/29 13:48:33 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct		s_room
 
 typedef struct		s_ant
 {
-	size_t			ant_nbr;
+	size_t			nbr;
 	struct s_node	*path;
 }					t_ant;
 
@@ -83,5 +83,6 @@ void				delete_room(void *node);
 void				clean_all(t_farm *farm, t_node *all_paths);
 
 size_t				ft_node_len(t_node *node);
-size_t				*create_lag_array(t_node *all_path);
+size_t				*create_lag_array(t_farm *farm, t_node *all_path);
+void				allocate_ant(t_farm *farm, size_t len, size_t *arr);
 #endif
