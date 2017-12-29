@@ -6,7 +6,7 @@
 #    By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 09:11:21 by nkamolba          #+#    #+#              #
-#    Updated: 2017/12/29 18:48:27 by nkamolba         ###   ########.fr        #
+#    Updated: 2017/12/29 21:02:19 by nkamolba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,18 +48,18 @@ all: $(NAME)
 $(NAME): $(FILE_O) $(PNTF_O)
 	@ar rc $(NAME) $^
 	@ranlib $(NAME)
-	@echo "$(NAME) created"
+	@echo "📚  $(NAME) created"
 
 %.o: %.c
 	@gcc -Wall -Wextra -Werror -c $< -o $@
 
 clean:
 	@rm -f $(FILE_O) $(PNTF_O)
-	@echo "$(NAME) clean done"
+	@echo "🗑️  $(NAME) clean done"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "$(NAME) fclean done"
+	@echo "✨  $(NAME) fclean done"
 
 re: fclean all
 

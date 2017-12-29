@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/25 17:53:57 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/29 19:56:21 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/29 20:17:28 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	read_ant(t_farm *farm)
 	if (!ft_isalldigit(str))
 		ft_error();
 	farm->ant_num = ft_atoi(str);
+	if (farm->ant_num <= 0)
+		ft_error();
 	farm->input = ft_strdup(str);
 	farm->input = ft_strfreecat_back(&farm->input, "\n");
 	free(str);

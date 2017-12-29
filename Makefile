@@ -6,7 +6,7 @@
 #    By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/22 18:05:36 by nkamolba          #+#    #+#              #
-#    Updated: 2017/12/29 18:51:08 by nkamolba         ###   ########.fr        #
+#    Updated: 2017/12/29 21:06:26 by nkamolba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,21 +23,25 @@ FILE_O = $(FILE:%.c=%.o)
 all : $(LIBFT) $(NAME)
 
 $(LIBFT):
-	make -C libft
+	@make -C libft
 
 $(NAME) : $(FILE_O) | $(LIBFT)
-	gcc $(FLAG) -o $(NAME) $(FILE_O) $(LIB)
+	@gcc $(FLAG) -o $(NAME) $(FILE_O) $(LIB)
+	@echo "🐜  $(NAME) created"
 
 %.o: %.c
-	gcc $(FLAG) -c $< -o $@
+	@gcc $(FLAG) -c $< -o $@
 
 clean:
-	make clean -C libft
-	rm -f $(FILE_O)
+	@make clean -C libft
+	@rm -f $(FILE_O)
+	@echo "🗑  $(NAME) clean done"
 
 fclean: clean
-	rm -f $(LIBFT)
-	rm -f $(NAME)
+	@rm -f $(LIBFT)
+	@echo "✨  libft.a fclean done"
+	@rm -f $(NAME)
+	@echo "✨  $(NAME) fclean done"
 
 re: fclean all
 

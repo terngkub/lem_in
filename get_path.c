@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 14:55:31 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/29 19:46:54 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/29 20:11:59 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	get_all_path(t_farm *farm)
 {
 	t_node	*path;
 
+	if (!farm->start || !farm->end || farm->start == farm->end)
+		ft_error();
 	while (1)
 	{
 		set_room(farm);
