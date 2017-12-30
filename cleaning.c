@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 15:34:59 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/29 17:44:31 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/30 21:05:22 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	delete_ant(void *node)
 
 void	clean_all(t_farm *farm)
 {
+	free(farm->input);
 	ft_node_delete(farm->room, delete_room);
 	ft_node_delete(farm->blocked, NULL);
 	ft_node_delete(farm->all_path, delete_path);

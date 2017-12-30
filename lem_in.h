@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 16:20:40 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/30 20:36:30 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/30 21:06:46 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct		s_ant
 {
 	size_t			nbr;
 	struct s_node	*path;
-	size_t			ant_color;
 	size_t			path_color;
 }					t_ant;
 
