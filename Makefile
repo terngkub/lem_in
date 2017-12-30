@@ -6,7 +6,7 @@
 #    By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/22 18:05:36 by nkamolba          #+#    #+#              #
-#    Updated: 2017/12/29 21:06:26 by nkamolba         ###   ########.fr        #
+#    Updated: 2017/12/30 16:28:57 by nkamolba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIB = -Llibft -lft
 LIBFT = libft/libft.a
 
 FILE = main.c utils.c farm.c read_input.c read_room.c read_link.c get_path.c\
-	   bfs.c allocate_ant.c move_ant.c cleaning.c
+	   bfs.c allocate_ant.c move_ant.c cleaning.c ft_error.c
 
 FILE_O = $(FILE:%.c=%.o)
 

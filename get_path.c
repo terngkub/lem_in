@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 14:55:31 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/29 20:11:59 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/30 15:50:19 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,10 @@ void	get_all_path(t_farm *farm)
 {
 	t_node	*path;
 
-	if (!farm->start || !farm->end || farm->start == farm->end)
-		ft_error();
+	if (!farm->start || !farm->end) 
+		ft_error("no start or end room");
+	if (farm->start == farm->end)
+		ft_error("start and end rooms are the same");
 	while (1)
 	{
 		set_room(farm);
@@ -80,5 +82,5 @@ void	get_all_path(t_farm *farm)
 		add_blocked(farm, path);
 	}
 	if (!farm->all_path)
-		ft_error();
+		ft_error("no available path");
 }

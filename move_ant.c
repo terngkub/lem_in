@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 17:35:55 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/29 17:45:40 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/30 14:49:06 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	create_ant(t_farm *farm, size_t *nbr)
 		if (farm->alloc[i] > 0)
 		{
 			if (!(ant = (t_ant *)malloc(sizeof(t_ant))))
-				ft_error();
+				ft_error("can't malloc properly when creating t_ant");
 			ant->nbr = *nbr;
 			path = farm->all_path;
 			j = 0;

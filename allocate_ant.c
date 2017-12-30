@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/29 15:23:15 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/29 17:28:07 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/30 14:47:53 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	compute_lag(t_farm *farm)
 
 	path = farm->all_path;
 	if (!(farm->alloc = (size_t *)malloc(sizeof(size_t) * farm->path_num)))
-		ft_error();
+		ft_error("can't malloc properly when creating allocate array");
 	i = 0;
 	while (i < farm->path_num)
 	{

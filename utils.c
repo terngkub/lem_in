@@ -6,15 +6,22 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 14:59:51 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/29 19:17:24 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/30 16:29:40 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	ft_error(void)
+void	ft_error(char *str)
 {
-	ft_putstr_fd("ERROR\n", 2);
+	if (str)
+	{
+		ft_putstr_fd("ERROR: ", 2);
+		ft_putstr_fd(str, 2);
+		ft_putstr_fd("\n", 2);
+	}
+	else
+		ft_putstr_fd("ERROR\n", 2);
 	exit(1);
 }
 
