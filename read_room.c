@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 14:34:06 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/30 16:38:09 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/30 18:50:28 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	read_room(t_farm *farm, char *str)
 	arr = ft_strsplit_e(str, ' ');
 	check_room(farm, arr);
 	room = create_room(arr);
-	ft_node_push_front(&farm->room, ft_node_create(room));
+	ft_node_pushfront_e(&farm->room, room);
 	delete_split(arr);
-	farm->input = ft_strfreecat_back(&farm->input, str);
-	farm->input = ft_strfreecat_back(&farm->input, "\n");
+	farm->input = ft_strfreecat_back_e(&farm->input, str);
+	farm->input = ft_strfreecat_back_e(&farm->input, "\n");
 }

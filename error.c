@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/30 14:58:22 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/30 16:38:48 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/30 19:31:31 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+void	ft_error(char *str)
+{
+	ft_putstr_fd("Error", 2);
+	if (str)
+	{
+		ft_putstr_fd(": ", 2);
+		ft_putstr_fd(str, 2);
+	}
+	ft_putstr_fd("\n", 2);
+	exit(1);
+}
 
 void	*ft_malloc_e(size_t size)
 {

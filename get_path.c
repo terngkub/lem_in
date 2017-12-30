@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 14:55:31 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/30 15:50:19 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/30 19:19:37 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	add_blocked(t_farm *farm, t_node *path)
 	while (path)
 	{
 		if (path->content != farm->end)
-			ft_node_push_front(&farm->blocked, ft_node_create(path->content));
+			ft_node_pushfront_e(&farm->blocked, path->content);
 		path = path->next;
 	}
 }
@@ -31,7 +31,7 @@ t_node	*get_path(t_farm *farm)
 	room = farm->end;
 	while (room)
 	{
-		ft_node_push_front(&path, ft_node_create(room));
+		ft_node_pushfront_e(&path, room);
 		room = room->edge_to;
 		if (room == farm->start)
 			break ;
@@ -66,7 +66,7 @@ void	get_all_path(t_farm *farm)
 {
 	t_node	*path;
 
-	if (!farm->start || !farm->end) 
+	if (!farm->start || !farm->end)
 		ft_error("no start or end room");
 	if (farm->start == farm->end)
 		ft_error("start and end rooms are the same");
@@ -76,9 +76,9 @@ void	get_all_path(t_farm *farm)
 		bfs(farm);
 		if (!(path = get_path(farm)))
 			break ;
-		ft_node_push_back(&farm->all_path, ft_node_create(path));
+		ft_node_pushback_e(&farm->all_path, path);
 		farm->path_num += 1;
-		ft_node_push_front(&farm->blocked, ft_node_create(path->content));
+		ft_node_pushfront_e(&farm->blocked, path->content);
 		add_blocked(farm, path);
 	}
 	if (!farm->all_path)

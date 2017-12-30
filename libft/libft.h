@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 09:09:23 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/30 15:32:49 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/30 18:47:04 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,8 +138,8 @@ typedef struct		s_node
 }					t_node;
 
 t_node				*ft_node_create(void *content);
-void				ft_node_push_front(t_node **node, void *content);
-void				ft_node_push_back(t_node **node, void *content);
+int					ft_node_pushfront(t_node **node, void *content);
+int					ft_node_pushback(t_node **node, void *content);
 void				*ft_node_pop_front(t_node **node);
 void				ft_node_delete(t_node *node, void (*del)(void *));
 size_t				ft_node_len(t_node *node);

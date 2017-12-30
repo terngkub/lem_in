@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_node_pushback.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/26 11:36:41 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/30 19:37:43 by nkamolba         ###   ########.fr       */
+/*   Created: 2017/12/29 18:45:33 by nkamolba          #+#    #+#             */
+/*   Updated: 2017/12/30 18:46:54 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "libft.h"
 
-int		main()
+int	ft_node_pushback(t_node **node, void *content)
 {
-	t_farm	farm;
+	t_node	*new;
+	t_node	*temp;
 
-	farm_init(&farm);
-	read_input(&farm);
-	get_all_path(&farm);
-	allocate_ant(&farm);
-	ft_printf("%s\n", farm.input);
-	print_all_path(&farm);
-	print_allocation(&farm);
-	move_ant(&farm);
-	clean_all(&farm);
-	return (0);
+	if (!(new = ft_node_create(content)))
+		return (0);
+	if (!(*node))
+		*node = new;
+	else
+	{
+		temp = *node;
+		while (temp->next)
+			temp = temp->next;
+		temp->next = new;
+	}
+	return (1);
 }

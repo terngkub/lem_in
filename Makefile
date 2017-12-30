@@ -6,7 +6,7 @@
 #    By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/22 18:05:36 by nkamolba          #+#    #+#              #
-#    Updated: 2017/12/30 16:28:57 by nkamolba         ###   ########.fr        #
+#    Updated: 2017/12/30 19:25:15 by nkamolba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,11 @@ FLAG = -Wall -Wextra -Werror
 LIB = -Llibft -lft
 LIBFT = libft/libft.a
 
-FILE = main.c utils.c farm.c read_input.c read_room.c read_link.c get_path.c\
-	   bfs.c allocate_ant.c move_ant.c cleaning.c ft_error.c
+FILE = main.c farm.c\
+	   read_input.c read_room.c read_link.c\
+	   get_path.c bfs.c\
+	   allocate_ant.c move_ant.c\
+	   cleaning.c utils.c error.c node_error.c
 
 FILE_O = $(FILE:%.c=%.o)
 

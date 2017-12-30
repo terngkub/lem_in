@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 17:35:55 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/30 14:49:06 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/30 19:57:02 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,18 @@ void	create_ant(t_farm *farm, size_t *nbr)
 	{
 		if (farm->alloc[i] > 0)
 		{
-			if (!(ant = (t_ant *)malloc(sizeof(t_ant))))
-				ft_error("can't malloc properly when creating t_ant");
+			ant = (t_ant *)ft_malloc_e(sizeof(t_ant));
 			ant->nbr = *nbr;
+			ant->ant_color = (*nbr % 6) + 31;
 			path = farm->all_path;
 			j = 0;
 			while (j++ < i)
 				path = path->next;
 			ant->path = path->content;
+			ant->path_color = (j % 6) + 90;
 			farm->alloc[i]--;
 			*nbr += 1;
-			ft_node_push_back(&farm->ant, ft_node_create(ant));
+			ft_node_pushback_e(&farm->ant, ant);
 		}
 		i++;
 	}
@@ -61,7 +62,8 @@ void	move_ant(t_farm *farm)
 			if (ant->path)
 			{
 				room = ((t_node*)ant->path)->content;
-				ft_printf("L%lu-%s ", ant->nbr, room->name);
+				ft_printf("\x1b[%lumL%lu\x1b[0m-\x1b[%lum%s\x1b[0m ", 
+						ant->ant_color, ant->nbr, ant->path_color, room->name);
 				ant->path = ant->path->next;
 			}
 			else

@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 14:35:00 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/30 15:46:04 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/30 19:20:01 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ t_room	*find_room(t_farm *farm, char *name)
 	return (NULL);
 }
 
-void	check_link(char **arr) {
+void	check_link(char **arr)
+{
 	size_t	len;
 	int		i;
 
@@ -50,9 +51,9 @@ void	read_link(t_farm *farm, char *str)
 		ft_error("couldn't find room");
 	if (!(room2 = find_room(farm, arr[1])))
 		ft_error("couldn't find room");
-	ft_node_push_front(&room1->edge, ft_node_create(room2));
-	ft_node_push_front(&room2->edge, ft_node_create(room1));
+	ft_node_pushfront_e(&room1->edge, room2);
+	ft_node_pushfront_e(&room2->edge, room1);
 	delete_split(arr);
-	farm->input = ft_strfreecat_back(&farm->input, str);
-	farm->input = ft_strfreecat_back(&farm->input, "\n");
+	farm->input = ft_strfreecat_back_e(&farm->input, str);
+	farm->input = ft_strfreecat_back_e(&farm->input, "\n");
 }

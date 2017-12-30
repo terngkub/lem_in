@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 16:20:40 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/30 16:34:00 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/30 19:49:24 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct		s_ant
 {
 	size_t			nbr;
 	struct s_node	*path;
+	size_t			ant_color;
+	size_t			path_color;
 }					t_ant;
 
 typedef struct		s_farm
@@ -47,14 +49,14 @@ typedef struct		s_farm
 
 void				farm_init(t_farm *farm);
 
-void				ft_error(char *str);
 int					ft_isalldigit(char *str);
 void				print_path(t_node *node);
+void				print_all_path(t_farm *farm);
+void				print_allocation(t_farm *farm);
 
 void				read_comment(t_farm *farm, char *str);
 void				read_ant(t_farm *farm);
 void				read_input(t_farm *farm);
-void				print_graph(t_farm *farm);
 
 t_room				*create_room(char **arr);
 void				check_room(t_farm *farm, char **arr);
@@ -86,9 +88,13 @@ void				delete_room(void *node);
 void				delete_ant(void *node);
 void				clean_all(t_farm *farm);
 
+void				ft_error(char *str);
 void				*ft_malloc_e(size_t size);
 char				*ft_strdup_e(char *str);
 char				**ft_strsplit_e(char *str, char c);
 char				*ft_strfreecat_back_e(char **str1, char *str2);
+
+void				ft_node_pushfront_e(t_node **node, void *content);
+void				ft_node_pushback_e(t_node **node, void *content);
 
 #endif
