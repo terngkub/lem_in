@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 16:20:40 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/30 19:49:24 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/30 20:36:30 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,22 @@ typedef struct		s_farm
 	size_t			path_num;
 	struct s_node	*ant;
 	size_t			*alloc;
+	char			print_all_path;
+	char			print_allocation;
+	char			color_path;
+	char			color_ant;
 }					t_farm;
 
 void				farm_init(t_farm *farm);
+void				read_bonus(t_farm *farm, char *str);
 
 int					ft_isalldigit(char *str);
 void				print_path(t_node *node);
 void				print_all_path(t_farm *farm);
 void				print_allocation(t_farm *farm);
 
+void				get_next_line_e(int fd, char **line);
+void				get_next_line_skip(int fd, char **line, int start_end);
 void				read_comment(t_farm *farm, char *str);
 void				read_ant(t_farm *farm);
 void				read_input(t_farm *farm);
@@ -80,6 +87,7 @@ void				compute_lag(t_farm *farm);
 void				allocate_ant(t_farm *farm);
 
 void				create_ant(t_farm *farm, size_t *nbr);
+void				print_move(t_farm *farm, t_node *ant_node, size_t *finish);
 void				move_ant(t_farm *farm);
 
 void				delete_split(char **arr);
